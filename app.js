@@ -1,17 +1,30 @@
+// app.js
+
 const express = require('express');
 const app = express();
 const port = 3000;
+
 const path = require('path');
 
-// html css
-app.use(express.static(path.join(__dirname, 'assets')));
+// cookie parser
+const cookieParser = require("cookie-parser");
 
-// 라우트 설정
+const usersRouter = require("./routes/users.route.js");
+
+// Middleware ==================================================
+app.use(express.json()) // req.body parser
+app.use(cookieParser()); // cookie parser
+// Middleware ==================================================
+
+// HTML, CSS
+app.use(express.static(path.join(__dirname, 'assets')));
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'assets', 'index.html'));
+  res.sendFile(path.join(__dirname, 'assets', 'index.html'));
 });
 
-// 서버 시작!
+// localhost:3000/api/
+app.use('/api', [usersRouter]);
+
 app.listen(port, () => {
-    console.log(port, '포트가 열렸습니다~^^');
+  console.log(port, '=> server open!');
 });

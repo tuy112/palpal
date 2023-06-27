@@ -1,16 +1,19 @@
 {
-  "name": "palpal",
+  "name": "palpalgram",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cookie-parser": "^1.4.6",
     "express": "^4.18.2",
-    "mysql2": "^3.4.1",
+    "jsonwebtoken": "^9.0.0",
+    "mysql2": "^3.4.2",
     "sequelize": "^6.32.1"
   },
   "devDependencies": {

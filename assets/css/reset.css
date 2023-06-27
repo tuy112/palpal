@@ -70,6 +70,49 @@ table {
 }
 
 
+/* header */
+#header {
+	position: relative;
+	background: #ededed;
+	margin-bottom: 16px;
+}
+#header .inner {
+	height: 100px;
+}
+#header h1 {
+	position: absolute;
+	top: 2px;
+	left: 10px;
+}
+#header h1 a {
+	font-size: 25px;
+	font-weight: 600;
+}
+#header h1 span {
+	font-size: 12px;
+	margin-left: 10px;
+}
+#header .loginWrap {
+	position: absolute;
+	right: 10px;
+	bottom: 2px;
+}
+#header .loginWrap .log {}
+#header .loginWrap .log li {
+	float: left;
+}
+#header .loginWrap .log li:last-child {
+	padding-left: 8px;
+}
+#header .loginWrap .log li a {
+	font-size: 15px;
+	font-weight: 500;
+	transition: 0.1s;
+}
+#header .loginWrap .log li a:hover {
+	font-weight: 600;
+}
+
 /* footer */
 #footer {
 	position: fixed;
@@ -80,3 +123,5 @@ table {
 	font-weight: 500;
 	font-size: 10px;
 }
+
+

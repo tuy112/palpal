@@ -28,16 +28,19 @@ footer, header, hgroup, menu, nav, section {
 body {
 	overflow-x: hidden;
 	margin: 0;
+	padding: 20px;
 	position: relative;
-	line-height: 1.7;
-    font-size: 17px;    
-    font-family: 'Noto Sans KR', sans-serif;
-}
-a {
 	line-height: 1.6;
+    font-size: 16px;    
+    font-family: 'Noto Sans KR', sans-serif;
+	cursor: default;
+}
+a, button {
+	line-height: 1.7;
     font-size: 17px;    
     text-decoration: none;
     color:#333;
+	cursor: pointer;
 }
 
 ol, ul , li {
@@ -64,4 +67,16 @@ table {
 	overflow: hidden;
 	visibility: hidden;
 	line-height: 0;
+}
+
+
+/* footer */
+#footer {
+	position: fixed;
+	bottom: 0;
+	right: 10px;
+}
+#footer p {
+	font-weight: 500;
+	font-size: 10px;
 }

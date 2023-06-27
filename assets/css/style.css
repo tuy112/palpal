@@ -1,4 +1,113 @@
-h1 {
+/* mainVisual */
+#mainVisual {
+    width: 100%;
+    margin-bottom: 50px;
+}
+#mainVisual h1 {
+    text-align: center;
+    font-size: 15px;
     font-weight: 600;
-    font-size: 30px;
+    margin-bottom: 10px;
+}
+.outer {
+    border: 6px solid #999;
+    width: 800px;
+    height: 120px;
+    margin: 0 auto;
+    overflow-x: hidden;
+}
+.outer .list {
+    display: flex;
+    transition: .3s ease-out;
+    height: 100%;
+    border: 6px solid #777;
+}
+
+.list .inner {
+    padding: 0 16px;
+}
+
+.buttonList {
+    margin-top: 10px;
+    text-align: center;
+}
+.buttonList button {
+    background: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.3s;
+    border-radius: 3px;
+}
+.buttonList button:last-child {
+    margin-left: 10px;
+}
+.buttonList button:hover {
+    background: #333;
+    color: #fff;
+}
+
+/* main */
+#container {}
+#container.inner {}
+
+.main {}
+.main .palpal {}
+.main .palpal h3 {
+    font-size: 25px;
+    font-weight: 600;
+    text-align: center;
+}
+.main .palpal p {
+    font-size: 16px;
+    text-align: center;
+}
+
+/* main -newspid */
+.main .palpal .newspid {
+    margin-top: 10px;
+    border: 2px solid #dedede;
+    border-radius: 10px;
+    padding: 20px;
+}
+.main .palpal .newspid .card {
+    width: 250px;
+    border: 2px solid #333;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 5px 5px 5px 5px #ededed;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.main .palpal .newspid .card:hover {
+    transform: scale(1.05);
+}
+.main .palpal .newspid .card .cardImg {
+    height: 150px;
+    display: flex;
+    border: 1px solid #333;
+}
+.main .palpal .newspid .card .cardImg img {
+    width: 200px;
+    margin: 0 auto;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.main .palpal .newspid .card .cardHead {
+    height: 50px;
+    background-color: #ededed;
+    border: 1px solid #333;
+}
+.main .palpal .newspid .card .cardMain {
+    height: 100px;
+    border: 1px solid #333;
+}
+.main .palpal .newspid .card .cardMain p {
+    text-align: left;
+}
+.main .palpal .newspid .card .cardFooter {
+    height: 50px;
+    background-color: #ededed;
+    border: 1px solid #333;
 }

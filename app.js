@@ -1,13 +1,14 @@
 const express = require('express');
 const app = express();
 const port = 3000;
+const path = require('path');
 
 // html css
-app.use(express.static('asset'));
+app.use(express.static(path.join(__dirname, 'assets')));
 
 // 라우트 설정
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/assets/index.html');
+    res.sendFile(path.join(__dirname, 'assets', 'index.html'));
 });
 
 // 서버 시작!

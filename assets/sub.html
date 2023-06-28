@@ -3,12 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>detail Page</title>
-    <link rel="stylesheet" href="./static/css/reset.css">
-    <link rel="stylesheet" href="./static/css/sub.css">
+    <title>sub Page</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/sub.css">
 </head>
 <body>
-    
+    <!-- 본문바로가기 -->
+    <p id="skipNav" class="hide"><a href="./index.html">본문 바로가기</a></p>
+
+    <!-- header -->
+    <header id="header">
+        <div class="inner">
+            <h1><a href="./index.html">PalPalGram</a><span>[팔팔그램]</span></h1>
+            <!-- loginBox -->
+            <div class="loginWrap">
+                <ul class="log">
+                    <li>
+                        <a href="./login.html" onclick="LoadingWithMask()">로그인</a>
+                    </li>
+                    <li>
+                        <a href="./signup.html" onclick="LoadingWithMask()">회원가입</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- hamburger Menu -->
+            <input class="burgerCheck" type="checkbox" id="burgerCheck" />
+            <label class="burgerIcon" for="burgerCheck"><span class="burgerSticks"></span></label>
+            
+            <div class="menu">
+                <div class="menuBox">
+                    <div class="welcome" id="welcomeMsg"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="container" class="main"></main>
+
+    <!-- footer -->
+    <footer id="footer">
+        <p>design by node.js 8조 - palpal</p>
+    </footer>
 
 
     <!-- script part -->

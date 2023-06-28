@@ -28,7 +28,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	overflow-x: hidden;
 	margin: 0;
-	padding: 20px;
+	padding: 0;
 	position: relative;
 	line-height: 1.6;
     font-size: 16px;    
@@ -69,6 +69,7 @@ table {
 	line-height: 0;
 }
 
+/* Common css ====================== */
 
 /* header */
 #header {
@@ -81,37 +82,135 @@ table {
 }
 #header h1 {
 	position: absolute;
-	top: 2px;
+	top: 3px;
 	left: 10px;
 }
 #header h1 a {
 	font-size: 25px;
 	font-weight: 600;
+	transition: 0.2s;
+}
+#header h1 a:hover {
+	border-bottom: 3px solid #000;
 }
 #header h1 span {
 	font-size: 12px;
 	margin-left: 10px;
 }
+/* header - loginWrap */
 #header .loginWrap {
 	position: absolute;
+	bottom: 0;
 	right: 10px;
-	bottom: 2px;
 }
 #header .loginWrap .log {}
 #header .loginWrap .log li {
 	float: left;
 }
 #header .loginWrap .log li:last-child {
-	padding-left: 8px;
+	margin-left: 8px;
 }
 #header .loginWrap .log li a {
 	font-size: 15px;
 	font-weight: 500;
-	transition: 0.1s;
+	transition: 0.2s;
 }
 #header .loginWrap .log li a:hover {
 	font-weight: 600;
+	border-bottom: 2px solid #000;
 }
+
+
+/* sideBar - hamburger Menu */
+.menu {
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 100%;
+	max-width: 0;
+	transition: 0.5s ease;
+	z-index: 1;
+	background-color: #999;
+
+	border-radius: 15px;
+	margin-right: 1px;
+}
+.menu .menuBox {
+	width: 200px;
+	padding: 12px;
+}
+.menu .menuBox .messages {
+	margin-top: 80px;
+}
+.menu .menuBox .messages .welcome {}
+.menu .menuBox .messages p {
+	font-weight: 600;
+	color: #fff;
+}
+.burgerIcon {
+	cursor: pointer;
+	display: inline-block;
+	position: absolute;
+	z-index: 2;
+	padding: 8px 0;
+	top: 15px;
+	right: 10px;
+	user-select: none;
+	width: auto;
+	margin: 0;
+}
+.burgerIcon .burgerSticks {
+	background: #333;
+	display: block;
+	height: 5px;
+	position: relative;
+	transition: background .2s ease-out;
+	width: 36px;
+}
+  
+.burgerIcon .burgerSticks:before,
+.burgerIcon .burgerSticks:after {
+	background: #333;
+	content: '';
+	display: block;
+	height: 100%;
+	position: absolute;
+	transition: all .2s ease-out;
+	width: 100%;
+}
+  
+.burgerIcon .burgerSticks:before {
+	top: 10px;
+}
+  
+.burgerIcon .burgerSticks:after {
+	top: -10px;
+}
+  
+.burgerCheck {
+	display: none;
+}
+.burgerCheck:checked~.menu {
+	max-width: 200px;
+}
+  
+.burgerCheck:checked~.burgerIcon .burgerSticks {
+	background: transparent;
+}
+  
+.burgerCheck:checked~.burgerIcon .burgerSticks:before {
+	transform: rotate(-45deg);
+}
+  
+.burgerCheck:checked~.burgerIcon .burgerSticks:after {
+	transform: rotate(45deg);
+}
+  
+.burgerCheck:checked~.burgerIcon:not(.steps) .burgerSticks:before,
+.burgerCheck:checked~.burgerIcon:not(.steps) .burgerSticks:after {
+	top: 0;
+}
+
 
 /* footer */
 #footer {

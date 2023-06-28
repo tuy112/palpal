@@ -7,7 +7,7 @@
 const slide = document.querySelector(".slide");
 let slideWidth = slide.clientWidth;
 
-// 버튼 엘리먼트 선택하기
+// 버튼 엘리먼트 선택
 const prevBtn = document.querySelector(".slide_prev_button");
 const nextBtn = document.querySelector(".slide_next_button");
 
@@ -29,7 +29,7 @@ for (let i = 0; i < maxSlide; i++) {
 
 const paginationItems = document.querySelectorAll(".slide_pagination > li");
 
-// 무한 슬라이드를 위해 start, end 슬라이드 복사하기
+// start, end 슬라이드 복사
 const startSlide = slideItems[0];
 const endSlide = slideItems[slideItems.length - 1];
 const startElem = document.createElement("div");
@@ -41,13 +41,13 @@ endElem.innerHTML = endSlide.innerHTML;
 startSlide.classList.forEach((c) => startElem.classList.add(c));
 startElem.innerHTML = startSlide.innerHTML;
 
-// 각 복제한 엘리먼트 추가하기
+// 각 복제한 엘리먼트 추가
 slideItems[0].before(endElem);
 slideItems[slideItems.length - 1].after(startElem);
 
-// 슬라이드 전체를 선택해 값을 변경해주기 위해 슬라이드 전체 선택하기
+// 슬라이드 전체 선택
 slideItems = document.querySelectorAll(".slide_item");
-//
+
 let offset = slideWidth + currSlide;
 slideItems.forEach((i) => {
   i.setAttribute("style", `left: ${-offset}px`);
@@ -55,19 +55,19 @@ slideItems.forEach((i) => {
 
 function nextMove() {
   currSlide++;
-  // 마지막 슬라이드 이상으로 넘어가지 않게 하기 위해서
+  // 마지막 슬라이드 이상으로 넘어가지 않게 하기 위해
   if (currSlide <= maxSlide) {
-    // 슬라이드를 이동시키기 위한 offset 계산
+    // offset 계산
     const offset = slideWidth * currSlide;
-    // 각 슬라이드 아이템의 left에 offset 적용
+    // offset 적용
     slideItems.forEach((i) => {
       i.setAttribute("style", `left: ${-offset}px`);
     });
-    // 슬라이드 이동 시 현재 활성화된 pagination 변경
+    // 현재 활성화된 pagination 변경
     paginationItems.forEach((i) => i.classList.remove("active"));
     paginationItems[currSlide - 1].classList.add("active");
   } else {
-    // 무한 슬라이드 기능 - currSlide 값만 변경해줘도 되지만 시각적으로 자연스럽게 하기 위해 아래 코드 작성
+    // 무한 슬라이드 기능
     currSlide = 0;
     let offset = slideWidth * currSlide;
     slideItems.forEach((i) => {
@@ -209,4 +209,3 @@ slide.addEventListener("mouseout", () => {
     nextMove();
   }, 3000);
 });
-

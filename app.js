@@ -14,6 +14,9 @@ const usersRouter = require("./routes/users_route.js");
 // Middleware ==================================================
 app.use(express.json()) // req.body parser
 app.use(cookieParser()); // cookie parser
+
+app.use('/api', [usersRouter]);
+app.use('/api', [postsRouter]);
 // Middleware ==================================================
 
 // HTML, CSS
@@ -23,7 +26,7 @@ app.get('/', (req, res) => {
 });
 
 // localhost:3000/api/
-app.use('/api', [usersRouter]);
+
 
 app.listen(port, () => {
   console.log(port, '=> server open!');

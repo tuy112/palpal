@@ -11,42 +11,60 @@
     <!-- 본문바로가기 -->
     <p id="skipNav" class="hide"><a href="./index.html">본문 바로가기</a></p>
 
+    <!-- sideBar -->
+    <!-- hamburger Menu -->
+    <input class="burgerCheck" type="checkbox" id="burgerCheck" />
+    <label class="burgerIcon" for="burgerCheck"><span class="burgerSticks"></span></label>
+    
+    <div class="menu">
+        <div class="menuBox">
+            <div class="messages">
+                <div class="welcome" id="welcomeMsg"></div>
+                <p>test</p>
+            </div>
+        </div>
+    </div>
+
     <!-- header -->
-    <header id="header"></header>
+    <header id="header">
+        <div class="inner">
+            <h1><a href="./index.html">PalPalGram</a><span>[팔팔그램]</span></h1>
+            <!-- loginBox -->
+            <div class="loginWrap">
+                <ul class="log">
+                    <li>
+                        <a href="./login.html">로그인</a>
+                    </li>
+                    <li>
+                        <a href="./signup.html">회원가입</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
 
     <!-- mainVisual -->
     <section id="mainVisual">
-        <h1>PalPalGram에 오신 여러분을 환영합니다😊</h1>
-        <div class="outer">
-            <div class="list">
-                <div class="inner">
-                    <h2>first...</h2>
-                    <p>내용입력</p>
-                </div>
-                <div class="inner">
-                    <h2>second...</h2>
-                    <p>내용입력</p>
-                </div>
-                <div class="inner">
-                    <h2>third...</h2>
-                    <p>내용입력</p>
-                </div>
-            </div>
-        </div>
-          
-        <div class="buttonList">
-            <button class="buttonLeft">&lt; Left</button>
-            <button class="buttonRight">Right &gt;</button>
+        <div class="slide slide_wrap">
+            <div class="slide_item item1">1</div>
+            <div class="slide_item item2">2</div>
+            <div class="slide_item item3">3</div>
+            <div class="slide_item item4">4</div>
+            <div class="slide_item item5">5</div>
+            <div class="slide_prev_button slide_button">◀</div>
+            <div class="slide_next_button slide_button">▶</div>
+            <ul class="slide_pagination"></ul>
         </div>
     </section>
 
     <!-- main -->
     <main id="container" class="main">
+        <!-- palpal board -->
         <div class="palpal">
             <h3>PalPalGram</h3>
-            <p>팔팔그램에 오신 여러분을 환영합니다</p>
+            <p>PalPalGram에 오신 여러분을 환영합니다😊</p>
             <div class="newspid">
-                <div class="card">
+                <div class="card" onclick="location.href='./sub.html'">
                     <div class="cardImg">
                         <img src="./images/example.png" alt="예시" />
                     </div>

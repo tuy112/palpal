@@ -10,6 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       // ==================================================
+      // create-user 의 userId랑 userInfo 의 userId랑 같거든요
       userId: { // Foreign Key
         allowNull: false, // NOT NULL
         type: Sequelize.INTEGER,

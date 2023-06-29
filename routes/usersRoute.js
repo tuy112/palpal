@@ -1,10 +1,10 @@
-// routes>users_route.js
+// routes>usersRoute.js
 
 const express = require("express");
 const router = express.Router();
 
 // Middleware
-const authMiddleware = require("../middlewares/auth-middleware.js");
+const authMiddleware = require("../middleware/authMiddleware.js");
 // JWT
 const jwt = require("jsonwebtoken")
 // Model
@@ -87,8 +87,6 @@ router
 router.get("/users/:userId", authMiddleware, async (req, res) => {
   const paramsUserId = req.params.userId; // from params, type: string
   const { userId } = res.locals.user; // from authMiddleware, type: number
-  console.log(paramsUserId, userId)
-  console.log(typeof paramsUserId, typeof userId)
 
   try {
     if (paramsUserId !== String(userId)) {

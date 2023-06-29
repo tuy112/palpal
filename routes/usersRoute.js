@@ -5,6 +5,7 @@ const router = express.Router();
 
 // Middleware
 const authMiddleware = require("../middleware/authMiddleware.js");
+
 // JWT
 const jwt = require("jsonwebtoken")
 // Model

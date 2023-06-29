@@ -11,6 +11,7 @@ const cookieParser = require("cookie-parser");
 
 const usersRouter = require("./routes/usersRoute.js");
 const postsRouter = require("./routes/postsRoute.js");
+const cmtsRouter = require("./routes/cmtsRoute.js");
 
 // Middleware ==================================================
 app.use(express.json()) // req.body parser
@@ -19,6 +20,7 @@ app.use(cookieParser()); // cookie parser
 // localhost:3000/api/
 app.use('/api', [usersRouter]);
 app.use('/api', [postsRouter]);
+app.use('/api', [cmtsRouter]);
 // Middleware ==================================================
 
 // HTML, CSS
@@ -27,6 +29,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'assets', 'index.html'));
 });
 
+// server start!!
 app.listen(port, () => {
   console.log(port, '=> server open!');
 });

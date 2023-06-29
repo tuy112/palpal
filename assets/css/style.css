@@ -121,7 +121,7 @@
     border-radius: 10px;
     padding: 20px;
 }
-.main .palpal .newspid .card {
+.main .palpal .newspid .post {
     width: 250px;
     border: 2px solid #333;
     flex-direction: column;
@@ -131,34 +131,34 @@
     cursor: pointer;
     transition: 0.3s;
 }
-.main .palpal .newspid .card:hover {
+.main .palpal .newspid .post:hover {
     transform: scale(1.05);
 }
-.main .palpal .newspid .card .cardImg {
+.main .palpal .newspid .post .postImg {
     height: 150px;
     display: flex;
     border: 1px solid #333;
 }
-.main .palpal .newspid .card .cardImg img {
+.main .palpal .newspid .post .postImg img {
     width: 200px;
     margin: 0 auto;
     border-radius: 10px;
     margin-top: 5px;
     margin-bottom: 5px;
 }
-.main .palpal .newspid .card .cardHead {
+.main .palpal .newspid .post .postHead {
     height: 50px;
     background-color: #ededed;
     border: 1px solid #333;
 }
-.main .palpal .newspid .card .cardMain {
+.main .palpal .newspid .post .postMain {
     height: 100px;
     border: 1px solid #333;
 }
-.main .palpal .newspid .card .cardMain p {
+.main .palpal .newspid .post .postMain p {
     text-align: left;
 }
-.main .palpal .newspid .card .cardFooter {
+.main .palpal .newspid .post .postFooter {
     height: 50px;
     background-color: #ededed;
     border: 1px solid #333;

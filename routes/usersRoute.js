@@ -1,7 +1,10 @@
-// routes>users.route.js
+// routes>usersRoute.js
 
 const express = require("express");
 const router = express.Router();
+
+// Middleware
+const authMiddleware = require("../middleware/authMiddleware.js");
 
 // JWT
 const jwt = require("jsonwebtoken")
@@ -13,7 +16,7 @@ router
   .post("/signup", async (req, res) => {
     const { email, nickname, password, confirm } = req.body;
     const existUserEmail = await Users.findOne({ where: { email } });
-    const exitsUserNickname = await Users.findOne({ where: { nickname } })
+    const exitsUserNickname = await UserInfos.findOne({ where: { nickname } })
 
     try {
       if (!email) {
@@ -81,22 +84,32 @@ router
     }
   })
 
-// 사용자 조회 API (GET)
-router.get("/users/:userId", async (req, res) => {
-  const { userId } = req.params;
+// 사용자 정보 조회 API (GET)
+router.get("/users/:userId", authMiddleware, async (req, res) => {
+  const paramsUserId = req.params.userId; // from params, type: string
+  const { userId } = res.locals.user; // from authMiddleware, type: number
 
-  const user = await Users.findOne({
-    attributes: ["userId", "email", "createdAt", "updatedAt"],
-    include: [
-      {
-        model: UserInfos,  // 1:1 관계를 맺고있는 UserInfos 테이블을 조회합니다.
-        attributes: ["userDesc"],
-      }
-    ],
-    where: { userId }
-  });
+  try {
+    if (paramsUserId !== String(userId)) {
+      return res.status(403).json({ message: "권한이 존재하지 않습니다." });
+    } else if (paramsUserId === String(userId)) {
+      const user = await Users.findOne({
+        attributes: ["userId", "email", "createdAt", "updatedAt"],
+        include: [
+          {
+            model: UserInfos,  // 1:1 관계를 맺고있는 UserInfos 테이블을 조회합니다.
+            attributes: ["nickname", "userDesc"],
+          }
+        ],
+        where: { userId: paramsUserId }
+      });
 
-  return res.status(200).json({ data: user });
+      return res.status(200).json({ data: user });
+    }
+    // try => catch
+  } catch {
+    return res.status(400).json({ message: "사용자 정보 조회에 실패하였습니다." });
+  }
 });
 
 module.exports = router;

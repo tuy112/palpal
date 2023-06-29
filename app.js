@@ -16,6 +16,7 @@ const postsRouter = require("./routes/postsRoute.js");
 app.use(express.json()) // req.body parser
 app.use(cookieParser()); // cookie parser
 
+// localhost:3000/api/
 app.use('/api', [usersRouter]);
 app.use('/api', [postsRouter]);
 // Middleware ==================================================
@@ -25,9 +26,6 @@ app.use(express.static(path.join(__dirname, 'assets')));
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'assets', 'index.html'));
 });
-
-// localhost:3000/api/
-
 
 app.listen(port, () => {
   console.log(port, '=> server open!');

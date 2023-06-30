@@ -177,10 +177,47 @@ li {
   font-size: 16px;
   text-align: center;
 }
-.main .postWrite .postBtn {
+.main .postWrite .postBtnWrap {
+  text-align: center;
+  margin-top: 18px;
+}
+.main .postWrite .postBtnWrap .postBtn {
+  background: none;
+  transition: 0,3s;
+  font-weight: 600;
+}
+.main .postWrite .postBtnWrap .postBtn:hover {
+  background: #333;
+  color: #fff;
+}
+.popWrap{
+  position: fixed;
+  top:0; left:0; right:0; bottom:0; 
+  background: rgba(0,0,0,.5); 
+  font-size: 0; 
   text-align: center;
 }
-.main form {
-  margin: 0 auto;
+.popWrap:after{
+  display:inline-block; 
+  height:100%; 
+  vertical-align:middle; 
+  content:'';
 }
+.popWrap .inner{
+  display:inline-block; 
+  padding:20px 30px; 
+  background:#fff; 
+  width:200px; 
+  vertical-align:middle; 
+  font-size:15px;
+  border: 2px solid #333;
+  border-radius: 10px;
+  margin-top: 500px;
+}
+.main .popWrap form {}
+
+.main .popWrap .btnGo {}
+.main .popWrap .btnGo:hover {}
+.main .popWrap .btnClose {}
+.main .popWrap .btnClose:hover {}
 

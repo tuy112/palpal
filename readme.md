@@ -1,3 +1,5 @@
 ## palpalGram db
 
-! [palpaldb.png](./assets/images/palpaldb.png)
+! [palpaldb.png][def]
+
+[def]: ./assets/images/palpaldb.png

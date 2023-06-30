@@ -10,15 +10,14 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       // ==================================================
-      // create-user 의 userId랑 userInfo 의 userId랑 같거든요
       userId: { // Foreign Key
         allowNull: false, // NOT NULL
         type: Sequelize.INTEGER,
         references: {
-          model: 'Users', // Users(model)를 참조합니다.
-          key: 'userId', // Users(model)의 userId(column)를 참조합니다.
+          model: 'Users',
+          key: 'userId',
         },
-        onDelete: 'CASCADE', // 만약 Users(model)의 userId(column)가 삭제되면, Posts(model)의 Data가 삭제됩니다.
+        onDelete: 'CASCADE',
       },
       // ==================================================
       nickname: {

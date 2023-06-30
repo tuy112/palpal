@@ -21,7 +21,7 @@ router
     const hashedPassword = await bcrypt.hash(password, 10)
     // bcrypt.hash( ) 비밀번호를 해시화 하는것에 사용합니다.
     // (암호화할 비밀번호, 솔트수) => 솔트 수는 알고리즘에 대한 복잡성을 나타냅니다.
-    // 숫자가 높을수록 암호화에 더 많은 시간 소요, 일반적으로 10정도의 값 사용됩니다.
+    // 숫자(솔트 수)가 높을수록 암호화에 더 많은 시간 소요, 일반적으로 10정도의 값 사용됩니다.
 
     try {
       if (!email) {
@@ -50,7 +50,7 @@ router
       }
       // Users(table), UserInfos(table)에 사용자 정보를 추가합니다.
       // 입력된 password와 암호화된 패스워드 검증
-      const user = await Users.create({email, password: hashedPassword})
+      const user = await Users.create({ email, password: hashedPassword })
       const userInfo = await UserInfos.create({
         userId: user.userId,
         email: email,

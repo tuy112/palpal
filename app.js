@@ -1,5 +1,6 @@
 // app.js
 
+const cors = require('cors');
 const express = require('express');
 const app = express();
 const port = 3000;
@@ -16,6 +17,7 @@ const cmtsRouter = require("./routes/cmtsRoute.js");
 // Middleware ==================================================
 app.use(express.json()) // req.body parser
 app.use(cookieParser()); // cookie parser
+app.use(cors()); // front-back connect
 
 // localhost:3000/api/
 app.use('/api', [usersRouter]);

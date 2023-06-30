@@ -73,38 +73,8 @@
             <h3>게시글 작성</h3>
             <p>여러분의 이야기를 작성해보세요 ❣</p>
             <div class="postBtnWrap">
-                <a href="#popInfo" class="postBtn"">게시글 작성 Btn</button>
+                <button class="postBtn" onclick="showPopup();">게시글 작성 Btn</button>
             </div>
-            <!-- postWrite popup -->
-            <div id="popInfo" class="popWrap" style="display:none;">
-                <div class="inner">
-                    <form action="../routes/postsRoute.js" method="post">
-                        <div class="formGroup">
-                            <label for="title">제목:</label>
-                            <input type="text" class="form-control" id="title"
-                            placeholder="제목 입력(4-100)" name="title"
-                            maxlength="100" required="required"
-                            pattern=".{4,100}">
-                        </div>
-                        <div class="formGroup">
-                            <label for="content">내용:</label>
-                            <textarea class="form-control" rows="5" id="content"
-                            name="content" placeholder="내용 작성"></textarea>
-                        </div>
-                        <div class="formGroup">
-                            <label for="writer">작성자:</label>
-                            <input type="text" class="form-control" id="writer"
-                            placeholder="작성자(2자-10자)" name="writer">
-                        </div>
-                    </form>
-                    <div class="popBtnWrap">
-                        <button type="submit" class="btnGo">등록</button>
-                        <button type="button" class="btnClose">닫기</button>
-                    </div>
-                    
-                </div>
-            </div>
-            
         </div>
     </main>
     
@@ -116,5 +86,11 @@
 
     <!-- script part -->
     <script type="module" src="./js/main.js"></script>
+    <script>
+        /* 게시물 작성 part */
+        function showPopup() { 
+        window.open("../showPopup.html","게시글 생성","width=500, height=400, right=100, top=50");
+        };
+    </script>
 </body>
 </html>

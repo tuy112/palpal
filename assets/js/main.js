@@ -211,23 +211,3 @@ slide.addEventListener("mouseout", () => {
 });
 
 
-/* 게시물 작성 part */
-// popup
-const target = document.querySelectorAll('.postBtn');
-const btnPopClose = document.querySelectorAll('.popWrap .popBtnWrap .btnClose');
-let targetID;
-
-// popup open
-for(let i = 0; i < target.length; i++){
-  target[i].addEventListener('click', function(){
-    targetID = this.getAttribute('href');
-    document.querySelector(targetID).style.display = 'block';
-  });
-}
-
-// popup close
-for(let j = 0; j < target.length; j++){
-  btnPopClose[j].addEventListener('click', function(){
-    this.parentNode.parentNode.parentNode.style.display = 'none';
-  });
-}

@@ -38,10 +38,10 @@
     cursor: pointer;
 }
 .main .postBox .post .postHead .cmtBtn:first-child {
-    margin-left: 10px;
+    margin-left: 11px;
 }
 .main .postBox .post .postHead .cmtBtn:last-child {
-    margin-left: 5px;
+    margin-left: 30px;
 }
 .main .postBox .post .postHead .cmtBtn:hover {
     background: #ffc0cb;

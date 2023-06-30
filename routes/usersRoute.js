@@ -1,6 +1,7 @@
 // routes>usersRoute.js
 
 const express = require("express");
+const bcrypt = require('bcrypt'); // 암호화 라이브러리 "bcrypt"
 const router = express.Router();
 
 // Middleware
@@ -17,6 +18,10 @@ router
     const { email, nickname, password, confirm } = req.body;
     const existUserEmail = await Users.findOne({ where: { email } });
     const exitsUserNickname = await UserInfos.findOne({ where: { nickname } })
+    const hashedPassword = await bcrypt.hash(password, 10)
+    // bcrypt.hash( ) 비밀번호를 해시화 하는것에 사용합니다.
+    // (암호화할 비밀번호, 솔트수) => 솔트 수는 알고리즘에 대한 복잡성을 나타냅니다.
+    // 숫자가 높을수록 암호화에 더 많은 시간 소요, 일반적으로 10정도의 값 사용됩니다.
 
     try {
       if (!email) {
@@ -44,7 +49,8 @@ router
         return res.status(412).json({ message: "중복된 nickname입니다." });
       }
       // Users(table), UserInfos(table)에 사용자 정보를 추가합니다.
-      const user = await Users.create({ email, password });
+      // 입력된 password와 암호화된 패스워드 검증
+      const user = await Users.create({email, password: hashedPassword})
       const userInfo = await UserInfos.create({
         userId: user.userId,
         email: email,
@@ -64,8 +70,12 @@ router
   .post("/login", async (req, res) => {
     const { email, password } = req.body;
     const existUser = await Users.findOne({ where: { email } });
+    const passwordMatch = await bcrypt.compare(password, existUser.password);
+    // bcrypt.compare() 함수는 입력된 비밀번호화 암호화되어 저장된 비밀번호 비교
+    // bcrypt.compare(입력된 비밀번호, 데이터베이스에서 가져온 암호화된 비밀번호)
+    // 일치하면 true, 일치하지 않으면 false 반환합니다.
     try {
-      if (!existUser || password !== existUser.password) {
+      if (!existUser || !passwordMatch) {
         return res.status(412).json({ message: "email 또는 password를 확인해주세요." });
       }
 

@@ -11,12 +11,14 @@ const {Cmts} = require('../models');
 const {Op} = require('sequelize');
 
 // 댓글 생성 API (POST)
-router.post('/cmts', authMiddleware, async (req, res) => {
+router.post('/posts/:postId/cmts', authMiddleware, async (req, res) => {
   const {userId} = res.locals.user;
+  const {postId} = req.params;
   const {content} = req.body;
 
   const cmt = await Cmts.create({
     userId: userId,
+    postId: postId,
     content: content
   });
 
@@ -24,9 +26,9 @@ router.post('/cmts', authMiddleware, async (req, res) => {
 });
 
 // 댓글 목록 조회 API (GET)
-router.get('/cmts', async (req, res) => {
+router.get('/posts/:postId/cmts', async (req, res) => {
   const cmts = await Cmts.findAll({
-    attributes: ['cmtId', 'content', 'createdAt', 'updatedAt'],
+    attributes: ['cmtId', 'postId', 'content', 'createdAt', 'updatedAt'],
     order: [['createdAt', 'DESC']]
   });
 
@@ -34,12 +36,12 @@ router.get('/cmts', async (req, res) => {
 });
 
 // 댓글 수정 API (PUT)
-router.put('/cmts/:cmtId', authMiddleware, async (req, res) => {
+router.put('/posts/:postId/cmts', authMiddleware, async (req, res) => {
   const {cmtId} = req.params;
   const {userId} = res.locals.user;
   const {content} = req.body;
 
-  const cmt = await Cnts.findOne({where: {cmtId}});
+  const cmt = await Cmts.findOne({where: {cmtId}});
   if (!cmt) {
     return res.status(404).json({message: '댓글이 존재하지 않습니다.'});
   } else if (cmt.userId !== userId) {
@@ -58,7 +60,7 @@ router.put('/cmts/:cmtId', authMiddleware, async (req, res) => {
 });
 
 // 게시글 삭제 API (DELETE)
-router.delete('/cmts/:cmtId', authMiddleware, async (req, res) => {
+router.delete('/posts/:postId/cmts', authMiddleware, async (req, res) => {
   const {cmtId} = req.params;
   const {userId} = res.locals.user;
   const {content} = res.req.body;

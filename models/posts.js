@@ -10,10 +10,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "userId",
       });
 
-      // this.hasMany(models.Comments, {
-      //   sourceKey: "postId",
-      //   foreignKey: "postId",
-      // });
+      this.hasMany(models.Cmts, {
+        sourceKey: "postId",
+        foreignKey: "postId",
+      });
     }
   }
 

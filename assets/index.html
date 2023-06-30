@@ -11,20 +11,6 @@
     <!-- 본문바로가기 -->
     <p id="skipNav" class="hide"><a href="./index.html">본문 바로가기</a></p>
 
-    <!-- sideBar -->
-    <!-- hamburger Menu -->
-    <input class="burgerCheck" type="checkbox" id="burgerCheck" />
-    <label class="burgerIcon" for="burgerCheck"><span class="burgerSticks"></span></label>
-    
-    <div class="menu">
-        <div class="menuBox">
-            <div class="messages">
-                <div class="welcome" id="welcomeMsg"></div>
-                <p>test</p>
-            </div>
-        </div>
-    </div>
-
     <!-- header -->
     <header id="header">
         <div class="inner">
@@ -39,6 +25,7 @@
                         <a href="./signup.html">회원가입</a>
                     </li>
                 </ul>
+                <div class="welcome" id="welcomeMsg"></div>
             </div>
         </div>
     </header>
@@ -59,7 +46,7 @@
 
     <!-- main -->
     <main id="container" class="main">
-        <!-- palpal board -->
+        <!-- palpal post -->
         <div class="palpal">
             <h3>PalPalGram</h3>
             <p>PalPalGram에 오신 여러분을 환영합니다😊</p>
@@ -79,6 +66,34 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- postWrite -->
+        <div class="postWrite">
+            <h3>게시글 작성</h3>
+            <p>여러분의 이야기를 작성해보세요 ❣</p>
+            <button class="postBtn" id="postBtn" onclick="post()">게시글 작성</button>
+            
+            <form action="../routes/postsRoute.js" method="post">
+                <div class="formGroup">
+                    <label for="title">제목:</label>
+                    <input type="text" class="form-control" id="title"
+                    placeholder="제목 입력(4-100)" name="title"
+                    maxlength="100" required="required"
+                    pattern=".{4,100}">
+                </div>
+                <div class="formGroup">
+                    <label for="content">내용:</label>
+                    <textarea class="form-control" rows="5" id="content"
+                    name="content" placeholder="내용 작성"></textarea>
+                </div>
+                <div class="formGroup">
+                    <label for="writer">작성자:</label>
+                    <input type="text" class="form-control" id="writer"
+                    placeholder="작성자(2자-10자)" name="writer">
+                </div>
+                <button type="submit" class="btn btn-default">등록</button>
+            </form>
         </div>
     </main>
     

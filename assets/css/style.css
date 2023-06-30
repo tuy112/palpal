@@ -3,96 +3,96 @@
     margin-bottom: 20px;
 }
 .slide {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    user-select: none;
-  }
-  .slide_item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    left: 0px;
-    width: 100%;
-    height: 300px;
-    flex-shrink: 0;
-    transition: left 0.15s;
-  }
-  .slide_button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: calc(50% - 16px);
-    width: 32px;
-    height: 32px;
-    border-radius: 100%;
-    background-color: #cccc;
-    cursor: pointer;
-  }
-  
-  .slide_prev_button {
-    left: 10px;
-  }
-  .slide_next_button {
-    right: 10px;
-  }
-  
-  /* 각 슬라이드가 변경되는 것을 시각적으로 확인하기 쉽도록 각 슬라이드별 색상 적용 */
-  .slide_item.item1 {
-    background-color: darkgoldenrod;
-  }
-  .slide_item.item2 {
-    background-color: aqua;
-  }
-  .slide_item.item3 {
-    background-color: blueviolet;
-  }
-  .slide_item.item4 {
-    background-color: burlywood;
-  }
-  .slide_item.item5 {
-    background-color: cornflowerblue;
-  }
-  
-  /* 페이지 바로가기 */
-  ul,
-  li {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  .slide_pagination {
-    display: flex;
-    gap: 5px;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  .slide_pagination > li {
-    color: #7fb5ff88;
-    cursor: pointer;
-    font-size: 25px;
-  }
-  .slide_pagination > li.active {
-    color: #7fb5ff;
-  }
-  
-  .slide_item_duplicate {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    left: 0px;
-    width: 100%;
-    height: 300px;
-    flex-shrink: 0;
-    transition: left 0.15s;
-  }
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  user-select: none;
+}
+.slide_item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  left: 0px;
+  width: 100%;
+  height: 300px;
+  flex-shrink: 0;
+  transition: left 0.15s;
+}
+.slide_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: calc(50% - 16px);
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  background-color: #cccc;
+  cursor: pointer;
+}
+
+.slide_prev_button {
+  left: 10px;
+}
+.slide_next_button {
+  right: 10px;
+}
+
+/* 각 슬라이드가 변경되는 것을 시각적으로 확인하기 쉽도록 각 슬라이드별 색상 적용 */
+.slide_item.item1 {
+  background-color: darkgoldenrod;
+}
+.slide_item.item2 {
+  background-color: aqua;
+}
+.slide_item.item3 {
+  background-color: blueviolet;
+}
+.slide_item.item4 {
+  background-color: burlywood;
+}
+.slide_item.item5 {
+  background-color: cornflowerblue;
+}
+
+/* 페이지 바로가기 */
+ul,
+li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.slide_pagination {
+  display: flex;
+  gap: 5px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.slide_pagination > li {
+  color: #7fb5ff88;
+  cursor: pointer;
+  font-size: 25px;
+}
+.slide_pagination > li.active {
+  color: #7fb5ff;
+}
+
+.slide_item_duplicate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  left: 0px;
+  width: 100%;
+  height: 300px;
+  flex-shrink: 0;
+  transition: left 0.15s;
+}
 
 
 
@@ -105,63 +105,82 @@
 .main {}
 .main .palpal {}
 .main .palpal h3 {
-    font-size: 25px;
-    font-weight: 600;
-    text-align: center;
+  font-size: 25px;
+  font-weight: 600;
+  text-align: center;
 }
 .main .palpal p {
-    font-size: 16px;
-    text-align: center;
+  font-size: 16px;
+  text-align: center;
 }
 
 /* main -newspid */
 .main .palpal .newspid {
-    margin-top: 10px;
-    border: 2px solid #dedede;
-    border-radius: 10px;
-    padding: 20px;
+  margin-top: 10px;
+  border: 2px solid #dedede;
+  border-radius: 10px;
+  padding: 20px;
 }
 .main .palpal .newspid .post {
-    width: 250px;
-    border: 2px solid #333;
-    flex-direction: column;
-    border-radius: 10px;
-    padding: 10px;
-    box-shadow: 5px 5px 5px 5px #ededed;
-    cursor: pointer;
-    transition: 0.3s;
+  width: 250px;
+  border: 2px solid #333;
+  flex-direction: column;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 5px 5px 5px 5px #ededed;
+  cursor: pointer;
+  transition: 0.3s;
 }
 .main .palpal .newspid .post:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 .main .palpal .newspid .post .postImg {
-    height: 150px;
-    display: flex;
-    border: 1px solid #333;
+  height: 150px;
+  display: flex;
+  border: 1px solid #333;
 }
 .main .palpal .newspid .post .postImg img {
-    width: 200px;
-    margin: 0 auto;
-    border-radius: 10px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+  width: 200px;
+  margin: 0 auto;
+  border-radius: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 .main .palpal .newspid .post .postHead {
-    height: 50px;
-    background-color: #ededed;
-    border: 1px solid #333;
+  height: 50px;
+  background-color: #ededed;
+  border: 1px solid #333;
 }
 .main .palpal .newspid .post .postMain {
-    height: 100px;
-    border: 1px solid #333;
+  height: 100px;
+  border: 1px solid #333;
 }
 .main .palpal .newspid .post .postMain p {
-    text-align: left;
+  text-align: left;
 }
 .main .palpal .newspid .post .postFooter {
-    height: 50px;
-    background-color: #ededed;
-    border: 1px solid #333;
+  height: 50px;
+  background-color: #ededed;
+  border: 1px solid #333;
 }
 
+/* 게시글 작성 */
+.main .postWrite {
+  margin-top: 50px;
+}
+.main .postWrite h3 {
+  font-size: 25px;
+  font-weight: 600;
+  text-align: center;
+}
+.main .postWrite p {
+  font-size: 16px;
+  text-align: center;
+}
+.main .postWrite .postBtn {
+  text-align: center;
+}
+.main form {
+  margin: 0 auto;
+}
 

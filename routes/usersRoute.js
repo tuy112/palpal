@@ -67,7 +67,7 @@ router
     }
   })
 
-// login API (POST)
+// log-in API (POST)
 router
   .post("/login", async (req, res) => {
     const { email, password } = req.body;
@@ -76,6 +76,7 @@ router
     // bcrypt.compare() 함수는 입력된 비밀번호와 암호화되어 저장된 비밀번호(hashedPassword)를 비교합니다.
     // bcrypt.compare(request에 입력된 비밀번호, DataBase에 있는 암호화된 비밀번호)
     // 일치하면 true, 일치하지 않으면 false 값을 반환합니다.
+
     try {
       if (!existUser || !passwordMatch) {
         return res.status(412).json({ message: "email 또는 password를 확인해주세요." });
@@ -85,7 +86,6 @@ router
       const token = jwt.sign({
         userId: existUser.userId
       }, "customized_secret_key"); // Secret Key => customized_secret_key
-
       // Cookie 발급
       res.cookie("authorization", `Bearer ${token}`);
 
@@ -93,6 +93,17 @@ router
       // try => catch
     } catch {
       return res.status(400).json({ message: "log-in에 실패하였습니다." });
+    }
+  })
+
+// log-out API (POST)  
+router
+  .post("/logout", authMiddleware, async (req, res) => {
+    try {
+      res.clearCookie("authorization");
+      return res.status(200).json({ message: "log-out 되었습니다." })
+    } catch {
+      return res.status(400).json({ message: "log-out에 실패하였습니다." })
     }
   })
 
@@ -130,12 +141,13 @@ router
   .put("/users/:userId", authMiddleware, async (req, res) => {
     const paramsUserId = req.params.userId;
     const { userId } = res.locals.user;
-    const { password, nickname, userDesc, newPassword, newPasswordConfirm } = req.body;
+    const { password, newNickname, userDesc, newPassword, newPasswordConfirm } = req.body;
     const existUser = await Users.findOne({ where: { userId } });
-    const exitsUserNickname = await UserInfos.findOne({ where: { nickname } })
+    const exitsUserInfo = await UserInfos.findOne({ where: { userId } })
+    const newNicknameCheck = await UserInfos.findOne({ where: { nickname: newNickname } })
     // 암호화 관련
     const passwordMatch = await bcrypt.compare(password, existUser.password);
-    const hashedNewPassword = await bcrypt.hash(newPassword, 10)
+    const hashedNewPassword = newPassword ? await bcrypt.hash(newPassword, 10) : null;
 
     try {
       if (paramsUserId !== String(userId)) {
@@ -147,41 +159,46 @@ router
         if (!passwordMatch) {
           return res.status(400).json({ message: "password가 일치하지 않습니다." });
         }
-        if (!nickname || nickname.length < 3 || !/^[a-z A-Z 0-9]+$/.test(nickname)) {
-          return res.status(412).json({ message: "nickname의 형식이 올바르지 않습니다." })
+        // 사용자가 nickname을 변경했을 경우
+        if (newNickname) {
+          if (!newNickname || newNickname.length < 3 || !/^[a-z A-Z 0-9]+$/.test(newNickname)) {
+            return res.status(412).json({ message: "변경된 nickname의 형식이 올바르지 않습니다." })
+          }
+          if (newNicknameCheck) {
+            return res.status(412).json({ message: "중복된 nickname입니다." });
+          }
         }
-        if (exitsUserNickname) {
-          return res.status(412).json({ message: "중복된 nickname입니다." });
-        }
+        // 사용자가 password를 변경했을 경우
         if (newPassword || newPasswordConfirm) {
           if (newPassword !== newPasswordConfirm) {
             return res.status(412).json({ message: "변경된 password가 일치하지 않습니다." })
           }
-          if (!newPassword || newPassword.length < 4 || !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).*$/.test(password)) {
+          if (!newPassword || newPassword.length < 4 || !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).*$/.test(newPassword)) {
             return res.status(412).json({ message: "변경된 password 형식이 올바르지 않습니다." })
           }
-          if (newPassword.includes(nickname)) {
+          if (newPassword.includes(newNickname)) {
             return res.status(412).json({ message: "변경된 password에 nickname이 포함되어 있습니다." })
           }
         }
-
-        await Users.update(
-          {
-            password: hashedNewPassword
-          }, { where: { userId } }
+        await Users.update({
+          // 사용자가 password를 변경했을 경우 || 변경하지 않았을 경우
+          password: hashedNewPassword || existUser.password
+        },
+          { where: { userId } }
         )
         await UserInfos.update(
           {
-            nickname: nickname,
+            // 사용자가 nickname을 변경했을 경우 || 변경하지 않았을 경우
+            nickname: newNickname || exitsUserInfo.nickname,
             userDesc: userDesc
-          }, { where: { userId } }
+          },
+          { where: { userId } }
         )
-
         return res.status(200).json({ message: "사용자 정보 수정에 성공하였습니다." });
       }
       // try => catch
     } catch {
-      return res.status(400).json({ message: "사용자 정보 조회에 실패하였습니다." });
+      return res.status(400).json({ message: "사용자 정보 수정에 실패하였습니다." });
     }
   })
 

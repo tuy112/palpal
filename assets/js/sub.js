@@ -1,13 +1,10 @@
 // 좋아요
-function countPlus(){
-    count = count + 1;
-    document.querySelector(".likeCount").innerHTML="좋아요 "+count +"개";
-}
+let countNum = document.querySelector(".countNumber");
+let buttonWrap = document.querySelector(".buttonWrap");
 
-function like() {
-    const pushLikeBtn = document.querySelector("#likeBtn");
-    
-    pushLikeBtn.innerHTML ='<i class="xi-heart xi-2x"></i>';
-    pushLikeBtn.style.color ='red';
-    pushLikeBtn.addEventListener("click",countPlus);
-}
+buttonWrap.addEventListener("click", (e) => {
+    if (e.target.classList.contains("likeBtn")) {
+        countNum.innerHTML++;
+        //증가
+    };
+});

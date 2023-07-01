@@ -45,19 +45,19 @@
 
 /* 각 슬라이드가 변경되는 것을 시각적으로 확인하기 쉽도록 각 슬라이드별 색상 적용 */
 .slide_item.item1 {
-  background-color: darkgoldenrod;
+  background-color: #a0a0a0;
 }
 .slide_item.item2 {
-  background-color: aqua;
+  background-color: #3e91b5;
 }
 .slide_item.item3 {
-  background-color: blueviolet;
+  background-color: #808080;
 }
 .slide_item.item4 {
-  background-color: burlywood;
+  background-color: #5e7e9b;
 }
 .slide_item.item5 {
-  background-color: cornflowerblue;
+  background-color: #666666;
 }
 
 /* 페이지 바로가기 */
@@ -76,12 +76,12 @@ li {
   transform: translateX(-50%);
 }
 .slide_pagination > li {
-  color: #7fb5ff88;
+  color: #fff;
   cursor: pointer;
   font-size: 25px;
 }
 .slide_pagination > li.active {
-  color: #7fb5ff;
+  color: #bfff00;
 }
 
 .slide_item_duplicate {
@@ -222,6 +222,7 @@ li {
 }
 
 .postWrap .btnGo {
+  width: 200px;
   margin-right: 5px;
   transition: 0.3s;
   background: #fff;

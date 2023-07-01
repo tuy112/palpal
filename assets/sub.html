@@ -41,13 +41,18 @@
                     <img src="./images/example.png" alt="예시" />
                 </div>
                 <div class="postHead">
-                    <button class="cmtBtn" id="likeBtn" onclick="like();">❤</button>
-                    <button class="cmtBtn" id="cmtBtn" onclick="cmt();">💌</button>
-                    <div class="likeCount"></div>
-                    
+                    <div class="buttonWrap">
+                        <input type="button" class="likeBtn" value="❤" />
+                        <div class="countNumber">0</div>
+                    </div>
                 </div>
                 <div class="postMain">
-                  <p>메인내용</p>
+                    <div class="comment">
+                        <button class="cmtBtn">💌</button>
+                        <br>
+                        <input class="cmtInput" id="post_comment_input" type="text" placeholder="댓글 달기..." />
+                        <button class="postCmtBtn">게시</button>
+                    </div>
                 </div>
                 <div class="postFooter">
                   푸터

@@ -25,34 +25,69 @@
     margin-top: 5px;
     margin-bottom: 5px;
 }
+/* posthead */
 .main .postBox .post .postHead {
-    height: 50px;
+    height: 30px;
     background-color: #ededed;
     border: 1px solid #333;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
-.main .postBox .post .postHead .cmtBtn {
+.main .postBox .post .postHead .buttonWrap {
+    display: flex;
+}
+.main .postBox .post .postHead .likeBtn {
     background: #fff;
     transition: 0.3s;
     border-radius: 10px;
-    margin-top: 5px;
     cursor: pointer;
-}
-.main .postBox .post .postHead .cmtBtn:first-child {
     margin-left: 11px;
 }
-.main .postBox .post .postHead .cmtBtn:last-child {
-    margin-left: 30px;
-}
-.main .postBox .post .postHead .cmtBtn:hover {
+.main .postBox .post .postHead .likeBtn:hover {
     background: #ffc0cb;
     color: #ff3399;
 }
-.main .postBox .post .postMain {
+.main .postBox .post .postHead .countNumber {
+    margin-left: 30px;
+    margin-top: 3px;
+    font-weight: 600;
+}
+/* postmain */
+.postMain {
     height: 100px;
     border: 1px solid #333;
 }
-.main .postBox .post .postMain p {
-    text-align: left;
+.postMain .comment {
+    margin-left: 2px;
+    margin-top: 5px;
+}
+.postMain .comment .cmtBtn {
+    background: #fff;
+    transition: 0.3s;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.postMain .comment .cmtBtn:hover {
+    background: #ffc0cb;
+    color: #ff3399;
+}
+.postMain .comment .cmtInput {
+    margin-left: 9px;
+    margin-top: 30px;
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+.postMain .comment .postCmtBtn {
+    background: #fff;
+    transition: 0.3s;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.postMain .comment .postCmtBtn:hover {
+    background: #333;
+    color: #fff;
 }
 .main .postBox .post .postFooter {
     height: 50px;

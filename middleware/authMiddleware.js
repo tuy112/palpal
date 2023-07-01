@@ -8,6 +8,11 @@ const { Users } = require("../models");
 module.exports = async (req, res, next) => {
   try {
     const { authorization } = req.cookies;
+    if (!req.cookies.authorization) {
+      return res.status(403).json({
+        message: "현재 log-in 되어있지 않습니다."
+      });
+    }
     const [tokenType, token] = (authorization ?? "").split(" ");
 
     if (tokenType !== "Bearer") { // <= 형태가 일치하지 않는 경우

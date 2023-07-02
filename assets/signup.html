@@ -8,28 +8,40 @@
     <link rel="stylesheet" href="./css/login.css">
 </head>
 <body>
-    <div class="login">
-      <h1>회원가입</h1>
+  <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+    <div class="modal dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="signupModalLabel">회원가입</h1>
+        </div>
 
-      <form action="/signup" method="POST">
-        <label for="usersId">이메일:</label>
-        <input type="text" id="usersId" name="usersId" placeholder="아이디를 입력해주세요">
-        <br>
-        <label for="usersId">닉네임:</label>
-        <input type="text" id="nickname" name="nickname" placeholder="아이디를 입력해주세요">
-        <br>
-        <label for="password">비밀번호:</label>
-        <input type="password" id="password" name="password" placeholder="비밀번호를 입력해주세요">
-        <br>
-        <label for="password">번호확인:</label>
-        <input type="password" id="passwordCheck" name="passwordCheck" placeholder="비밀번호를 입력해주세요">
-        <br>
-        <button type="submit" class="signcomBtn">회원가입완료</button>
-      </form>
+        <div class="modal-body">
+          <form id="loginForm">
+            <div class="mb-3">
+              <label for="username">ID:</label>
+              <input type="text" id="username" name="username" placeholder="당신의 이메일을 입력해주세요!">
+            </div>
+            <div class="mb-3">
+              <label for="password">비밀번호:</label>
+              <input type="password" id="signupPw" name="password" placeholder="비밀번호를 한번 더 입력해주세요">
+            </div>
+            <div class="mb-3">
+              <label for="password">번호확인:</label>
+              <input type="password" id="signupConfirm" name="passwordCheck" placeholder="비밀번호를 한번 더 입력해주세요">
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <button onclick="signup()" class="btn btn-primary">회원가입 완료</button>
+          <button class="btn btn-danger" data-bs-dismiss="modal">닫기</button>
+        </div>
+      </div>
     </div>
+  </div>
 
 
     <!-- script part -->
-    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/login.js"></script>
 </body>
 </html>

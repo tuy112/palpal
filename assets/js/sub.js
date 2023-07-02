@@ -8,3 +8,11 @@ buttonWrap.addEventListener("click", (e) => {
         //증가
     };
 });
+
+// 공유하기
+const btnShareFb = document.querySelector('#shareFb');
+
+btnShareFb.addEventListener('click', () => {
+  const pageUrl = 'news.v.daum.net/v/20220319120213003';
+  window.open(`http://www.facebook.com/sharer/sharer.php?u=${pageUrl}`);
+})

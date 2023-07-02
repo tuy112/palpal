@@ -166,6 +166,36 @@ li {
   border: 1px solid #333;
 }
 
+/* main palpal p2 */
+.main .palpal.p2 {
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.main .palpal.p2 h3 {
+  font-size: 18px;
+}
+
+.main .palpal.p2 .peopleBtnWrap {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.main .palpal.p2 .peopleBtnWrap .peopleBtn {
+  transition: 0.3s;
+  background: none;
+  font-weight: 600;
+}
+.main .palpal.p2 .peopleBtnWrap .peopleBtn:hover {
+  background: #333;
+  color: #fff;
+}
+.main .palpal.p2 p {
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+
 /* 게시글 작성 */
 .main .postWrite {
   margin-top: 50px;
@@ -202,13 +232,13 @@ li {
 /* popup css */
 .postWrap{
   text-align: center;
-  margin-top: 50px;
+  border: 2px solid #333;
 }
 .postWrap form {}
 .postWrap form .formGroup {
   margin-bottom: 10px;
 }
-.postWrap form .label {
+.postWrap form .title {
   font-weight: 600;
   font-size: 11px;
 }
@@ -243,4 +273,3 @@ li {
   background: #333;
   color: #fff;
 }
-

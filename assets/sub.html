@@ -15,17 +15,6 @@
     <header id="header">
         <div class="inner">
             <h1><a href="./index.html">PalPalGram</a><span>[팔팔그램]</span></h1>
-            <!-- loginBox -->
-            <div class="loginWrap">
-                <ul class="log">
-                    <li>
-                        <a href="./login.html" id="login" onclick="login()">로그인</a>
-                    </li>
-                    <li>
-                        <a href="./signup.html" id="signUp" onclick="signUp()">회원가입</a>
-                    </li>
-                </ul>
-            </div>
             <div class="welcome" id="welcomeMsg"></div>
         </div>
     </header>
@@ -35,7 +24,7 @@
             <div class="post" id="post">
                 <h3>
                     <img src="" alt=""/>
-                    <div class="userId">userId</div>
+                    <div class="userId">postId 들어갈 곳</div>
                 </h3>
                 <div class="postImg">
                     <img src="./images/example.png" alt="예시" />
@@ -43,20 +32,29 @@
                 <div class="postHead">
                     <div class="buttonWrap">
                         <input type="button" class="likeBtn" value="❤" />
+                        <input type="button" class="shareBtn" id="shareFb" value="📨" />
                         <div class="countNumber">0</div>
                     </div>
                 </div>
                 <div class="postMain">
                     <div class="comment">
-                        <button class="cmtBtn">💌</button>
-                        <br>
+                        <div class="cmtBox"></div>
                         <input class="cmtInput" id="post_comment_input" type="text" placeholder="댓글 달기..." />
                         <button class="postCmtBtn">게시</button>
                     </div>
                 </div>
                 <div class="postFooter">
-                  푸터
+                  <p>지금까지 쓴 댓글 보기</p>
                 </div>
+            </div>
+        </div>
+
+        <!-- postWrite -->
+        <div class="postWrite">
+            <h3>게시글 작성</h3>
+            <p>여러분의 이야기를 작성해보세요 ❣</p>
+            <div class="postBtnWrap">
+                <button class="postBtn" onclick="showPopup();">게시글 작성은 여기서..!</button>
             </div>
         </div>
     </main>
@@ -70,5 +68,12 @@
     <!-- script part -->
     <script type="module" src="./js/main.js"></script>
     <script type="module" src="./js/sub.js"></script>
+    <script type="module" src="./js/post.js"></script>
+    <script>
+        /* 게시물 작성 button */
+        function showPopup() { 
+        window.open("../showPopup.html","게시글 생성","width=500, height=400, right=100, top=50");
+        };
+    </script>
 </body>
 </html>

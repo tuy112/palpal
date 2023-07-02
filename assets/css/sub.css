@@ -27,61 +27,72 @@
 }
 /* posthead */
 .main .postBox .post .postHead {
-    height: 30px;
+    height: 50px;
     background-color: #ededed;
     border: 1px solid #333;
-    padding-top: 5px;
-    padding-bottom: 5px;
 }
-.main .postBox .post .postHead .buttonWrap {
-    display: flex;
+.postHead .buttonWrap {
+    margin-top: 8px;
 }
-.main .postBox .post .postHead .likeBtn {
+.postHead .likeBtn {
+    width: 30px;
+    height: 30px;
     background: #fff;
     transition: 0.3s;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
     margin-left: 11px;
 }
-.main .postBox .post .postHead .likeBtn:hover {
+.postHead .likeBtn:hover {
     background: #ffc0cb;
     color: #ff3399;
 }
-.main .postBox .post .postHead .countNumber {
-    margin-left: 30px;
+.postHead .shareBtn {
+    width: 30px;
+    height: 30px;
+    background: #fff;
+    transition: 0.3s;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 5px;
+    /* font-size: 17px; */
+}
+.postHead .shareBtn:hover {
+    background: #ffc0cb;
+    color: #ff3399;
+}
+.postHead .countNumber {
+    margin-left: 20px;
     margin-top: 3px;
     font-weight: 600;
+    float: left;
 }
+
 /* postmain */
 .postMain {
-    height: 100px;
+    height: 170px;
     border: 1px solid #333;
 }
 .postMain .comment {
     margin-left: 2px;
     margin-top: 5px;
 }
-.postMain .comment .cmtBtn {
-    background: #fff;
-    transition: 0.3s;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-left: 10px;
-}
-.postMain .comment .cmtBtn:hover {
-    background: #ffc0cb;
-    color: #ff3399;
-}
 .postMain .comment .cmtInput {
     margin-left: 9px;
-    margin-top: 30px;
+    margin-top: 25px;
     border: 1px solid #333;
+    border-radius: 5px;
+}
+.postMain .comment .cmtBox {
+    width: 300px;
+    height: 100px;
+    border: 1px solid #777;
     border-radius: 5px;
 }
 .postMain .comment .postCmtBtn {
     background: #fff;
     transition: 0.3s;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
     margin-left: 10px;
 }
@@ -94,3 +105,89 @@
     background-color: #ededed;
     border: 1px solid #333;
 }
+
+/* 게시글 작성 */
+.main .postWrite {
+    margin-top: 50px;
+  }
+  .main .postWrite h3 {
+    font-size: 25px;
+    font-weight: 600;
+    text-align: center;
+  }
+  .main .postWrite p {
+    font-size: 16px;
+    text-align: center;
+  }
+  .main .postWrite .postBtnWrap {
+    text-align: center;
+    margin-top: 18px;
+    margin-bottom: 20px;
+  }
+  .main .postWrite .postBtnWrap .postBtn {
+    background: #f2f2f2;
+    border: 1px solid #333;
+    padding: 8px;
+    font-size: 13px;
+    border-radius: 7px;
+    transition: 1.1s;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .main .postWrite .postBtnWrap .postBtn:hover {
+    background: #333;
+    color: #fff;
+  }
+
+/* postfooter - 댓글 get하는 곳 */
+.postFooter {}
+.postFooter p {
+    margin-left: 10px;
+    font-size: 10px;
+}
+
+
+  /* popup css */
+  .postWrap{
+    text-align: center;
+    border: 2px solid #333;
+  }
+  .postWrap form {}
+  .postWrap form .formGroup {
+    margin-bottom: 10px;
+  }
+  .postWrap form .title {
+    font-weight: 600;
+    font-size: 11px;
+  }
+  .postWrap form .formControl {
+    border: 2px solid #333;
+    border-radius: 5px;
+  }
+  
+  .postWrap .postBtnWrap {
+    margin-top: 10px;
+  }
+  
+  .postWrap .btnGo {
+    width: 200px;
+    margin-right: 5px;
+    transition: 0.3s;
+    background: #fff;
+    font-weight: 600;
+    border-radius: 10px;
+  }
+  .postWrap .btnGo:hover {
+    background: #333;
+    color: #fff;
+  }
+  .postWrap .btnClose {
+    transition: 0.3s;
+    background: #fff;
+    font-weight: 600;
+    border-radius: 10px;
+  }
+  .postWrap .btnClose:hover {
+    background: #333;
+    color: #fff;
+  }

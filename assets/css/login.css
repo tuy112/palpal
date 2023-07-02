@@ -19,7 +19,7 @@ form input {
     border: 2px solid #333;
     margin-bottom: 10px;
 }
-form .loginBtn {
+.modal-footer .btn {
     width: 252px;
     transition: 0.3s;
     background: none;
@@ -30,11 +30,14 @@ form .loginBtn {
     padding: 3px;
     margin-bottom: 5px;
 }
-form .loginBtn:hover {
+.modal-footer .btn:hover {
     background: #333;
     color: #fff;
 }
-form .signupBtn {
+.modal-footer {
+    text-align: center;
+}
+.modal-footer .signupBtn {
     width: 252px;
     transition: 0.3s;
     background: none;
@@ -44,7 +47,7 @@ form .signupBtn {
     cursor: pointer;
     padding: 3px;
 }
-form .signupBtn:hover {
+.btnWrap .signupBtn:hover {
     background: #333;
     color: #fff;
 }

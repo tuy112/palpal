@@ -15,7 +15,7 @@ const postsRouter = require("./routes/postsRoute.js");
 const cmtsRouter = require("./routes/cmtsRoute.js");
 
 // Middleware ==================================================
-app.use(express.json()) // req.body parser
+app.use(express.json()); // req.body parser
 app.use(cookieParser()); // cookie parser
 app.use(cors()); // front-back connect
 

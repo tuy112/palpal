@@ -38,13 +38,13 @@
                 </div>
                 <div class="postMain">
                     <div class="comment">
-                        <div class="cmtBox"></div>
-                        <input class="cmtInput" id="post_comment_input" type="text" placeholder="댓글 달기..." />
+                        <div class="cmtBox" id="cmtBox"></div>
+                        <input class="cmtInput" id="cmtInput" type="text" placeholder="댓글 달기..." />
                         <button class="postCmtBtn">게시</button>
                     </div>
                 </div>
                 <div class="postFooter">
-                  <p>지금까지 쓴 댓글 보기</p>
+                    <p>지금까지 쓴 댓글 보기</p>
                 </div>
             </div>
         </div>
@@ -68,11 +68,10 @@
     <!-- script part -->
     <script type="module" src="./js/main.js"></script>
     <script type="module" src="./js/sub.js"></script>
-    <script type="module" src="./js/post.js"></script>
     <script>
         /* 게시물 작성 button */
         function showPopup() { 
-        window.open("../showPopup.html","게시글 생성","width=500, height=400, right=100, top=50");
+        window.open("./showPopup.html","게시글 생성","width=500, height=400, right=100, top=50");
         };
     </script>
 </body>

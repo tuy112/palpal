@@ -73,7 +73,7 @@
             <div class="peopleBtnWrap">
                 <button class="peopleBtn" onclick="people()">여기를 눌러주세요</button>
             </div>
-            <p class="people" id="peoples" style="display: none;">김재혁(leader), 배찬용, 김재용, 김동현</p>
+            <p class="people" id="peoples" style="display: none;">김재혁(leader), 배찬용, 김재용, 김동현, <br>+ 7조분들</p>
         </div>
     </main>
     
@@ -95,7 +95,10 @@
       crossorigin="anonymous"
     ></script>
     <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/mainVisual.js"></script>
+
     <script>
+        // palpalgram을 만든 사람들...
         function people() {
             let con = document.getElementById("peoples");
             if ( con.style.display == 'none' ) {

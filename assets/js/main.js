@@ -200,7 +200,7 @@ const callComments = async () => {
   console.log(commentsList)
 
   const commentsListElement = document.querySelector('#cmtBox');
-  Object.keys(commentsList).forEach((data) => {
+  Object.keys(commentsList).forEach((data) => { // values 변경???
   // <strong class="text-success">${data.nickname}</strong>
   // 이 부분은 빼셔야 합니다. nickname은 commentsList 객체의 Key 값에 존재하지 않습니다.
   // 추가할거면 Cmts랑 Userinfos부터 관계성 설정 다시 해서, migrate해야 합니다.

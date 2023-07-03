@@ -10,7 +10,7 @@ const { Posts } = require('../models');
 
 const { Op } = require('sequelize');
 
-// 게시글 생성 API (POST)
+// 게시글 작성 API (POST)
 router.post('/posts', authMiddleware, async (req, res) => {
   const { userId } = res.locals.user;
   const { title, content } = req.body;

@@ -21,7 +21,7 @@ router.get('/posts/:postId/cmts', async (req, res) => {
   return res.status(200).json({ data: cmts });
 });
 
-// 댓글 생성 API (POST)
+// 댓글 작성 API (POST)
 router.post('/posts/:postId/cmts', authMiddleware, async (req, res) => {
   const { userId } = res.locals.user;
   const { postId } = req.params;

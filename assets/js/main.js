@@ -9,10 +9,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   try {
     const postsDatas = await fetch('http://localhost:3000/api/posts', option).then(d => d.json());
-    const usersDatas = await fetch('http://localhost:3000/api/users', option).then(d => d.json());
+    const usersDatas = await fetch('http://localhost:3000/api/users/:userId', option).then(d => d.json());
+    const cmtsDatas = await fetch('http://localhost:3000/api/posts/:postId/cmts', option).then(d => d.json());
 
     console.log(postsDatas);
     console.log(usersDatas);
+    console.log(cmtsDatas);
 
   } catch (e) {
     console.error(e);
@@ -20,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 
-/* 프론트 - 백 본격적인 연결!!!!!!!!!!!!!!!!!!! 자고싶어ㅠㅠ */
+/* 프론트 - 백 본격적인 연결*/
 // login
 async function login() {
   const obj = {};
@@ -36,7 +38,7 @@ async function login() {
 
   try {
     const fetchedData = await fetch(
-      'http://localhost:3000/users/login',
+      'http://localhost:3000/api/login',
       option
     ).then((d) => {
       return d.json();
@@ -76,7 +78,7 @@ async function signup() {
 
   try {
     const fetchedData = await fetch(
-      'http://localhost:3000/users/signup',
+      'http://localhost:3000/api/signup',
       option
     ).then((d) => {
       return d.json();
@@ -89,7 +91,7 @@ async function signup() {
 /* ================================================================== */
 
 // post
-// 상세 게시글 조회
+// 게시글 조회
 const callPostInfo = async () => {
     const options = {
     method: 'GET',
@@ -99,9 +101,9 @@ const callPostInfo = async () => {
     };
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get('id');
-    const postList = await fetch(`http://localhost:3000/posts/${id}`, options).then((res) => res.json());
+    const postList = await fetch(`http://localhost:3000/api/posts`, options).then((res) => res.json());
 
-    const { title, content, postImgURL, like } = postList.data;
+    const { title, content } = postList.data;
 
     document.getElementById('title').textContent = title;
     document.getElementById('content').textContent = content;
@@ -128,7 +130,7 @@ async function postUpdate() {
     body: JSON.stringify(obj),
     };
     try {
-    const fetchedData = await fetch(`http://localhost:3000/posts/cmts/:cmtId`, option).then((d) => {
+    const fetchedData = await fetch(`http://localhost:3000/api/posts/cmts/:cmtId`, option).then((d) => {
         return d.json();
     });
     window.location.reload();
@@ -149,7 +151,7 @@ async function postDelete() {
         Authorization: auth,
         },
     };
-    const deletePost = await fetch(`http://localhost:3000/posts/:postId/cmts`, option).then((d) => d.json());
+    const deletePost = await fetch(`http://localhost:3000/api/posts/:postId/cmts`, option).then((d) => d.json());
     window.location.href = 'index.html';
     }
 }
@@ -171,7 +173,7 @@ async function commentInput() {
   body: JSON.stringify(obj),
   };
   try {
-  const fetchedData = await fetch(`http://localhost:3000/posts/:postId/cmts`, option).then((d) => {
+  const fetchedData = await fetch(`http://localhost:3000/api/posts/:postId/cmts`, option).then((d) => {
       return d.json();
   });
   location.reload();
@@ -182,7 +184,7 @@ async function commentInput() {
 
 // 게시글의 댓글 조회
 const callComments = async () => {
-  const options = {
+  const option = {
   method: 'GET',
   headers: {
       accept: 'application/json',
@@ -191,32 +193,41 @@ const callComments = async () => {
   const urlParams = new URLSearchParams(window.location.search);
   const id = urlParams.get('id');
 
-  const commentsList = await fetch(`http://localhost:3000/posts/:postId/cmts`, options).then((res) => res.json());
+  const commentsList = await fetch(`http://localhost:3000/api/posts/:postId/cmts`, option).then((d) => {
+    return d.json();
+  });
+  console.log(typeof commentsList)
+  console.log(commentsList)
 
   const commentsListElement = document.querySelector('#cmtBox');
-  commentsList.forEach((data) => {
-
-  commentsListElement.innerHTML += `<div class="d-flex text-muted pt-3 comment-container" style="width: 550px;">
-                                      <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false">
-                                      <title>Placeholder</title>
-                                      <rect width="100%" height="100%" fill="#007bff"></rect>
-                                      <text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
-                                      </svg>
-                                      <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                                      <div class="d-flex justify-content-between">
-                                          <strong class="text-success">${data.nickname}</strong>
-                                      </div>
-                                      <span class="d-block text-dark">${data.comment}</span>
-                                      <div class="button-container">
-                                          <div class="update-button-container">
-                                          <a href="#" class="update-button" onclick="commentUpdate(${data.id}); return false;">수정</a>
-                                      </div>
-                                          <a href="#" class="x-button" style="text-decoration: none;" onclick="commentDelete(${data.id}); return false;">X</a>
-                                          
-                                      </div>
-                                      </div>
-                                  </div>`;
-  });
+  Object.keys(commentsList).forEach((data) => {
+  // <strong class="text-success">${data.nickname}</strong>
+  // 이 부분은 빼셔야 합니다. nickname은 commentsList 객체의 Key 값에 존재하지 않습니다.
+  // 추가할거면 Cmts랑 Userinfos부터 관계성 설정 다시 해서, migrate해야 합니다.
+  // 나머지 변수 받는 부분은 객체에 있는 key 값으로 받도록 설정했습니다.
+  // by. KJY
+  commentsListElement.innerHTML += 
+  `<div class="d-flex text-muted pt-3 comment-container" style="width: 550px;">
+  <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false">
+  <title>Placeholder</title>
+  <rect width="100%" height="100%" fill="#007bff"></rect>
+  <text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
+  </svg>
+  <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+  <div class="d-flex justify-content-between">
+      <strong class="text-success">${data.nickname}</strong>
+  </div>
+  <span class="d-block text-dark">${data.content}</span>
+  <div class="button-container">
+      <div class="update-button-container">
+      <a href="#" class="update-button" onclick="commentUpdate(${data.cmtId}); return false;">수정</a>
+  </div>
+      <a href="#" class="x-button" style="text-decoration: none;" onclick="commentDelete(${data.cmtId}); return false;">X</a>
+      
+  </div>
+  </div>
+</div>`;
+  }).join("");
 };
 callComments();
 
@@ -234,7 +245,7 @@ async function commentUpdate(id) {
   body: JSON.stringify(obj),
   };
   try {
-  const fetchedData = await fetch(`http://localhost:3000/posts/cmts/:cmtId`, option).then((d) => {
+  const fetchedData = await fetch(`http://localhost:3000/api/posts/cmts/:cmtId`, option).then((d) => {
       return d.json();
   });
   window.location.reload();
@@ -254,7 +265,7 @@ async function commentDelete(id) {
       Authorization: auth,
       },
   };
-  const deleteComment = await fetch(`http://localhost:3000/posts/cmts/:cmtId`, option).then((d) => d.json());
+  const deleteComment = await fetch(`http://localhost:3000/api/posts/cmts/:cmtId`, option).then((d) => d.json());
   window.location.reload();
   }
 }

@@ -17,8 +17,8 @@
         <div class="modal-body">
           <form id="loginForm">
             <div class="mb-3">
-              <label for="username">사용자명:</label>
-              <input type="text" id="username" name="username" placeholder="아이디를 입력해주세요!">
+              <label for="userId">사용자명:</label>
+              <input type="text" id="userId" name="userId" placeholder="아이디를 입력해주세요!">
             </div>
             <div class="mb-3">
               <label for="password">비밀번호:</label>
@@ -28,7 +28,7 @@
         </div>
 
         <div class="modal-footer">
-          <button onclick="login()" class="btn btn-primary">로그인</button>
+          <button type="button" onclick="login();" class="btn btn-primary">로그인</button>
           <button class="btn signupBtn" onClick="location.href='./signup.html'">회원가입</button>
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">닫기</button>
         </div>
@@ -38,6 +38,6 @@
 
 
     <!-- script part -->
-    <script type="module" src="./js/login.js"></script>
+    <script type="module" src="./js/main.js"></script>
 </body>
 </html>

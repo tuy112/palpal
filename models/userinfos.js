@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
 
       this.belongsTo(models.Users, { // UserInfos => Users = 1:1
         targetKey: 'userId', // Users의 userId를
-        foreignKey: 'UserId', // UserInfos의 userId와 연결합니다.
+        foreignKey: 'userId', // UserInfos의 userId와 연결합니다.
       });
     }
   }
